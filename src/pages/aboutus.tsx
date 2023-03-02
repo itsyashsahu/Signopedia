@@ -21,7 +21,7 @@ const aboutus = () => {
                 <div className='flex h-fit place-self-center md:w-3/5 w-full flex-col md:flex-row justify-between ' >
                     {/* About Us for Vansh Kumar Sharma */}
                     <div className="text-center text-gray-500 p-10">
-                        <Image className="mx-auto mb-4 w-80 h-80 rounded-full" width={200} height={200} src="/vansh-k-sharma.webp" alt="Bonnie Avatar" />
+                        <Image className="mx-auto mb-4 w-40 h-40 md:w-80 md:h-80 rounded-full" width={200} height={200} src="/vansh-k-sharma.webp" alt="Bonnie Avatar" />
                         <h3 className="mb-1 text-2xl font-bold tracking-tight text-white ">
                             <a href="https://www.linkedin.com/in/vansh-kumar-sharma-8a7a84215/">Vansh Kumar Sharma</a>
                         </h3>
@@ -51,7 +51,7 @@ const aboutus = () => {
                     </div>
                     {/* About Us for Yash Sahu */}
                     <div className="text-center text-gray-500 p-10">
-                        <Image className="mx-auto mb-4 w-80 h-80 rounded-full bg-cover" width={200} height={400} src="/yash-sahu.webp" alt="Bonnie Avatar" />
+                        <Image className="mx-auto mb-4 w-40 h-40 md:w-80 md:h-80 rounded-full bg-cover" width={200} height={400} src="/yash-sahu.webp" alt="Bonnie Avatar" />
                         <h3 className="mb-1 text-2xl font-bold tracking-tight text-white ">
                             <a href="https://www.linkedin.com/in/itsyashsahu/">Yash Sahu</a>
                         </h3>
