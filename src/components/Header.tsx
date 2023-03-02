@@ -7,8 +7,6 @@ import React from 'react'
 const Header = () => {
     const ListItem = (item: String) => {
         const location = useRouter().pathname
-        // const location = Router.asPath
-        console.log("🚀 ~ ListItem ~ location:", location)
 
         if ("/" + item.toLocaleLowerCase().replace(" ", "") == location)
             return (

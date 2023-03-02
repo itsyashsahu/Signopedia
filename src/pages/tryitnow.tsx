@@ -1,11 +1,48 @@
 import Header from '@/components/Header'
 import Head from 'next/head'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState, ChangeEvent } from 'react'
 
 const TryItNow = () => {
+    const [img, setImg] = useState<File | null>(null);
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        const formData = new FormData();
+        // formData.append('image', img);
+        fetch('https://example.com/api/uploadImage', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error))
+    }
+
+    useEffect(() => {
+        if (img !== null) {
+            // console.log("🚀 ~ TryItNow ~ img:", img)
+            const formData = new FormData();
+            formData.append('image', img);
+            // console.log("🚀 ~ useEffect ~ formData:", formData)
+            fetch('http://localhost:3000/api/model', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error(error))
+
+        }
+    }, [img])
+
     return (
-        <div className=' flex flex-col' style={{ "width": "100vw", "backgroundSize": "cover", "backgroundPosition": 'center 30%', "backgroundRepeat": "no-repeat", "backgroundImage": `url("./bg-without.webp")` }}>
+        <div className=' flex flex-col md:h-screen' style={{ "width": "100vw", "backgroundSize": "cover", "backgroundPosition": 'center 30%', "backgroundRepeat": "no-repeat", "backgroundImage": `url("./bg-without.webp")` }}>
             {/* Head and Meta Tags Setting the Title */}
             <Head>
                 <title>Signopedia | Results</title>
@@ -23,7 +60,17 @@ const TryItNow = () => {
                                     <p className="mb-2 text-sm text-white"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                                     <p className="text-xs text-white ">PNG, JPG, JPEG</p>
                                 </div>
-                                <input id="dropzone-file" type="file" className="hidden" />
+                                <form onSubmit={handleSubmit}>
+                                    <input id="dropzone-file" type="file" className="hidden" onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                        // console.log(e.target.value);
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            // setSelectedFile(file);
+                                            // setImg((e.target as HTMLInputElement).files?.[0]);
+                                            setImg(file)
+                                        }
+                                    }} />
+                                </form>
                             </label>
                         </div>
                     </div>
