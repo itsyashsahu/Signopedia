@@ -5,7 +5,7 @@ import React from 'react'
 
 const aboutus = () => {
     return (
-        <div className='h-screen flex flex-col bg-[#0c0d0c]' style={{ "height": "100vh", "width": "100vw", "backgroundSize": "cover", "backgroundPosition": 'center 30%', "backgroundRepeat": "no-repeat", "backgroundImage": `url("./bg-without.webp")` }}>
+        <div className='flex flex-col bg-[#0c0d0c]' style={{ "height": "100vh", "width": "100vw", "backgroundSize": "cover", "backgroundPosition": 'center 30%', "backgroundRepeat": "no-repeat", "backgroundImage": `url("./bg-without.webp")` }}>
             {/* Head and Meta Tags Setting the Title */}
             <Head>
                 <title>Signopedia | About Us</title>
@@ -15,10 +15,10 @@ const aboutus = () => {
             {/* Header Component */}
             <Header />
             {/* Body Section */}
-            <section className="z-20 flex-grow h-96 flex item-center justify-center">
+            <section className="z-20 md:flex-grow md:h-96 flex item-center justify-center">
 
                 {/* About Us Section */}
-                <div className='flex h-fit place-self-center w-3/5 justify-between ' >
+                <div className='flex h-fit place-self-center md:w-3/5 w-full flex-col md:flex-row justify-between ' >
                     {/* About Us for Vansh Kumar Sharma */}
                     <div className="text-center text-gray-500 p-10">
                         <Image className="mx-auto mb-4 w-80 h-80 rounded-full" width={200} height={200} src="/vansh-k-sharma.webp" alt="Bonnie Avatar" />
