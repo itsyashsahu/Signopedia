@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import React, { useEffect, useState, ChangeEvent } from 'react'
@@ -9,16 +10,16 @@ const TryItNow = () => {
         e.preventDefault();
         const formData = new FormData();
         // formData.append('image', img);
-        fetch('https://example.com/api/uploadImage', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error))
+        // fetch('https://example.com/api/uploadImage', {
+        //     method: 'POST',
+        //     body: formData,
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => console.log(data))
+        //     .catch(error => console.error(error))
     }
 
     useEffect(() => {
@@ -27,16 +28,27 @@ const TryItNow = () => {
             const formData = new FormData();
             formData.append('image', img);
             // console.log("🚀 ~ useEffect ~ formData:", formData)
-            fetch('http://localhost:3000/api/model', {
-                method: 'POST',
-                body: formData,
+            // let url = "http://localhost:8000/api/model"
+            let url = "http://127.0.0.1:8000/api/model/"
+            axios.post(url, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                  'content-type': 'multipart/form-data'
                 }
-            })
-                .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.error(error))
+              })
+                  .then(res => {
+                    console.log(res.data);
+                  })
+                  .catch(err => console.log(err))
+            // fetch('http://localhost:8000/api/model', {
+            //     method: 'POST',
+            //     body: formData,
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data'
+            //     }
+            // })
+            //     .then(response => response.json())
+            //     .then(data => console.log(data))
+            //     .catch(error => console.error(error))
 
         }
     }, [img])
