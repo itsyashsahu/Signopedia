@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Head from 'next/head'
+import Image from 'next/image'
 import React from 'react'
 
 const samplesgallery = () => {
@@ -22,11 +23,11 @@ const samplesgallery = () => {
                             <div className="relative items-center w-full py-6 px-18">
                                 <div className="grid w-full grid-cols-1 gap-12 mx-auto lg:grid-cols-3">
                                     {/* Gallery Items */}
-                                    <img className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="http://localhost:3000/bg.webp" alt="image description" />
-                                    <img className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="http://localhost:3000/bg.webp" alt="image description" />
-                                    <img className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="http://localhost:3000/bg.webp" alt="image description" />
-                                    <img className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="http://localhost:3000/bg.webp" alt="image description" />
-                                    <img className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="http://localhost:3000/bg.webp" alt="image description" />
+                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
+                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
+                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
+                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
+                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
                                 </div>
                             </div>
                         </section>

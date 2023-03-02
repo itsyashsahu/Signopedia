@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Head from 'next/head'
+import Image from 'next/image'
 import React from 'react'
 
 const ResultPage = () => {
@@ -27,7 +28,7 @@ const ResultPage = () => {
                     </div>
                     {/* Image Corresponding to the traffic sign */}
                     <div className="drop-shadow-2xl lg:mt-0 lg:col-span-5 lg:flex ">
-                        <img className="h-full max-w-lg mr-5 transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png" alt="image description" />
+                        <Image width={500} height={500} className="h-full max-w-lg mr-5 transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
                     </div>
                 </div>
             </section>
