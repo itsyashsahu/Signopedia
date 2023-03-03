@@ -8,28 +8,18 @@ import React, { useEffect, useState, ChangeEvent } from 'react'
 const TryItNow = () => {
     const [img, setImg] = useState<File | null>(null);
     const router = useRouter();
+    // let url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/model/`
+    // console.log("🚀 ~ TryItNow ~ url:", url)
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const formData = new FormData();
-        // formData.append('image', img);
-        // fetch('https://example.com/api/uploadImage', {
-        //     method: 'POST',
-        //     body: formData,
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     }
-        // })
-        //     .then(response => response.json())
-        //     .then(data => console.log(data))
-        //     .catch(error => console.error(error))
     }
 
     useEffect(() => {
         if (img !== null) {
-            // console.log("🚀 ~ TryItNow ~ img:", img)
             const formData = new FormData();
             formData.append('image', img);
-            let url = "http://127.0.0.1:8000/api/model/"
+            let url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/model/`
             axios.post(url, formData, {
                 headers: {
                     'content-type': 'multipart/form-data'
@@ -87,13 +77,28 @@ const TryItNow = () => {
                         </div>
                         <div className="flex items-center md:pl-16  justify-between h-16 py-3text-base font-medium text-center text-gray-900  rounded-xl">
                             <div className='h-16 w-16'>
-                                <Image width={50} height={50} className="w-16 h-16 rounded-xl" src="/bg.webp" alt="Default avatar" />
+                                <Image width={50} height={50} className="w-16 h-16 hover:cursor-pointer rounded-xl" src="/images/stop.webp" alt="Default avatar" onClick={() => {
+                                    router.push({
+                                        pathname: '/resultpage',
+                                        query: { class: "15" }
+                                    })
+                                }} />
                             </div>
                             <div className='h-16 w-16'>
-                                <Image width={50} height={50} className="w-16 h-16 rounded-xl" src="/bg.webp" alt="Default avatar" />
+                                <Image width={50} height={50} className="w-16 h-16 hover:cursor-pointer rounded-xl" src="/images/ice_snow.webp" alt="Default avatar" onClick={() => {
+                                    router.push({
+                                        pathname: '/resultpage',
+                                        query: { class: "31" }
+                                    })
+                                }} />
                             </div>
                             <div className='h-16 w-16'>
-                                <Image width={50} height={50} className="w-16 h-16 rounded-xl" src="/bg.webp" alt="Default avatar" />
+                                <Image width={50} height={50} className="w-16 h-16 hover:cursor-pointer rounded-xl" src="/images/straight_or_right.webp" alt="Default avatar" onClick={() => {
+                                    router.push({
+                                        pathname: '/resultpage',
+                                        query: { class: "37" }
+                                    })
+                                }} />
                             </div>
                             <a href='/samplesgallery' className='h-16 w-16 bg-[#646964] rounded-xl flex justify-center items-center font-bold text-white text-lg'>
                                 100+
