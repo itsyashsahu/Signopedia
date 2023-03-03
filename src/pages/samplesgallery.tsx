@@ -1,9 +1,26 @@
 import Header from '@/components/Header'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
+import dataJson from "../data.json"
+import { Data } from "./resultpage"
+// interface Data {
+//     [key: string]: any;
+// }
+
+
 
 const samplesgallery = () => {
+    const data: Data = dataJson
+    const router = useRouter();
+
+    const handleRedirect = (depictedClass: string) => {
+        router.push({
+            pathname: '/resultpage',
+            query: { class: depictedClass }
+        })
+    }
     return (
         <div className='flex flex-col bg-[#0c0d0c]' style={{ "width": "100vw", "backgroundSize": "cover", "backgroundPosition": 'center 30%', "backgroundRepeat": "no-repeat", "backgroundImage": `url("./bg-without.webp")` }}>
             {/* Head and Meta Tags Setting the Title */}
@@ -23,11 +40,14 @@ const samplesgallery = () => {
                             <div className="relative items-center w-full py-2 md:py-6 px-18">
                                 <div className="grid w-full grid-cols-1 md:gap-12 gap-4 mx-auto lg:grid-cols-3">
                                     {/* Gallery Items */}
-                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
-                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
-                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
-                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
-                                    <Image width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src="/bg.webp" alt="image description" />
+                                    {
+                                        Object.values(data).map((value, index) => {
+                                            return (
+                                                <Image key={index} width={400} height={400} className="w-full h-full transition-all duration-300 rounded-lg cursor-pointer border-collapse" src={value?.link ? "/images/" + value?.link : "/bg.webp"} alt="image description" onClick={() => handleRedirect((index + 1).toString())} />
+                                            )
+                                        })
+                                    }
+
                                 </div>
                             </div>
                         </section>
