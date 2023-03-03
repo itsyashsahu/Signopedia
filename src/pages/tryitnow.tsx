@@ -2,10 +2,12 @@ import Header from '@/components/Header'
 import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
+import { Router, useRouter } from 'next/router'
 import React, { useEffect, useState, ChangeEvent } from 'react'
 
 const TryItNow = () => {
     const [img, setImg] = useState<File | null>(null);
+    const router = useRouter();
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const formData = new FormData();
@@ -27,29 +29,20 @@ const TryItNow = () => {
             // console.log("🚀 ~ TryItNow ~ img:", img)
             const formData = new FormData();
             formData.append('image', img);
-            // console.log("🚀 ~ useEffect ~ formData:", formData)
-            // let url = "http://localhost:8000/api/model"
             let url = "http://127.0.0.1:8000/api/model/"
             axios.post(url, formData, {
                 headers: {
-                  'content-type': 'multipart/form-data'
+                    'content-type': 'multipart/form-data'
                 }
-              })
-                  .then(res => {
-                    console.log(res.data);
-                  })
-                  .catch(err => console.log(err))
-            // fetch('http://localhost:8000/api/model', {
-            //     method: 'POST',
-            //     body: formData,
-            //     headers: {
-            //         'Content-Type': 'multipart/form-data'
-            //     }
-            // })
-            //     .then(response => response.json())
-            //     .then(data => console.log(data))
-            //     .catch(error => console.error(error))
-
+            })
+                .then(res => {
+                    console.log(res.data.class);
+                    router.push({
+                        pathname: '/resultpage',
+                        query: { class: res.data.class }
+                    })
+                })
+                .catch(err => console.log(err))
         }
     }, [img])
 
