@@ -19,7 +19,8 @@ const TryItNow = () => {
         if (img !== null) {
             const formData = new FormData();
             formData.append('image', img);
-            let url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/model/`
+            // let url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/model/`
+            let url = `http://localhost:8000/api/model/`
             axios.post(url, formData, {
                 headers: {
                     'content-type': 'multipart/form-data'
