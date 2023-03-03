@@ -12,9 +12,10 @@ WORKDIR /app
 
 # Install the application dependencies
 RUN npm install
-RUN git pull
 RUN npm run build
-CMD ["npm run start"]
+RUN git pull
+CMD ["npm", "run", "start"]
+# CMD ["cd app && npm run start"]
 
 # Install pm2 globally
 # RUN npm install pm2 -g
