@@ -6,6 +6,7 @@ import { Router, useRouter } from 'next/router'
 import React, { useEffect, useState, ChangeEvent } from 'react'
 import https from 'https';
 import fs from 'fs';
+import Loading from '@/components/Loading'
 
 // import { uploadcareLoader } from '@uploadcare/nextjs-loader';
 // const cert = fs.readFileSync('./server.pem');
@@ -33,18 +34,30 @@ const TryItNow = () => {
 
     const [img, setImg] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(true);
     const router = useRouter();
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const formData = new FormData();
     }
 
+
+    const handleImageLoad = () => {
+        console.log("image", imageLoaded)
+        // setImageLoaded(false);
+    };
+
+    useEffect(() => {
+        console.log("🚀 ~ TryItNow ~ imageLoaded:", imageLoaded)
+
+    }, [imageLoaded])
+
     useEffect(() => {
         if (img !== null) {
             const formData = new FormData();
             formData.append('image', img);
             // let url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/model/`
-            let url = `http://15.207.222.238:8000/api/model/`
+            let url = `http://43.204.47.110:8000/api/model/`
             setLoading(true);
             axios.post(url, formData, {
                 headers: {
@@ -104,12 +117,18 @@ const TryItNow = () => {
                                 </div>
                                 <div className="flex items-center md:pl-16  justify-between h-16 py-3text-base font-medium text-center text-gray-900  rounded-xl">
                                     <div className='h-16 w-16'>
-                                        <Image width={50} height={50} className="w-16 h-16 hover:cursor-pointer rounded-xl" src="/images/stop.webp" alt="Default avatar" onClick={() => {
-                                            router.push({
-                                                pathname: '/resultpage',
-                                                query: { class: "15" }
-                                            })
-                                        }} />
+                                        {
+                                            (imageLoaded) ?
+                                                (<Image onLoad={handleImageLoad} width={50} height={50} className="w-16 h-16 hover:cursor-pointer rounded-xl" src="/images/stop.webp" alt="Default avatar" onClick={() => {
+                                                    router.push({
+                                                        pathname: '/resultpage',
+                                                        query: { class: "15" }
+                                                    })
+                                                }} />) :
+                                                (
+                                                    <Loading />
+                                                )
+                                        }
                                     </div>
                                     <div className='h-16 w-16'>
                                         <Image width={50} height={50} className="w-16 h-16 hover:cursor-pointer rounded-xl" src="/images/ice_snow.webp" alt="Default avatar" onClick={() => {

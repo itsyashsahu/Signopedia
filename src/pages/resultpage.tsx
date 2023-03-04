@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import dataJson from "../data.json"
 
-export interface Data {
+interface Data {
     [key: string]: any;
 }
 
