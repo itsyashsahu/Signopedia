@@ -6,14 +6,14 @@ RUN apk add --no-cache git nodejs npm
 
 # Clone the GitHub repository
 RUN git clone https://github.com/itsyashsahu/signopedia.git /app
-
+# RUN git pull
 # Set the working directory
 WORKDIR /app
+RUN git pull
 
 # Install the application dependencies
 RUN npm install
 RUN npm run build
-RUN git pull
 CMD ["npm", "run", "start"]
 # CMD ["cd app && npm run start"]
 
