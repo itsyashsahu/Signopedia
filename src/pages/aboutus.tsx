@@ -51,7 +51,7 @@ const aboutus = () => {
                     </div>
                     {/* About Us for Yash Sahu */}
                     <div className="text-center text-gray-500 p-10">
-                        <Image className="mx-auto mb-4 w-40 h-40 md:w-80 md:h-80 rounded-full bg-cover" width={200} height={400} src="/yash-sahu.webp" alt="Bonnie Avatar" />
+                        <Image className="mx-auto mb-4 w-40 h-40 md:w-80 md:h-80 rounded-full bg-cover object-cover" width={200} height={400} src="/yash-sahu.webp" alt="Bonnie Avatar" />
                         <h3 className="mb-1 text-2xl font-bold tracking-tight text-white ">
                             <a href="https://www.linkedin.com/in/itsyashsahu/">Yash Sahu</a>
                         </h3>
