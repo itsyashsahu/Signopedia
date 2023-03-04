@@ -5,10 +5,6 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import dataJson from "../data.json"
 import { Data } from "./resultpage"
-// interface Data {
-//     [key: string]: any;
-// }
-
 
 
 const samplesgallery = () => {
